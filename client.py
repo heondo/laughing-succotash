@@ -13,14 +13,14 @@ def on_message(client, userdata, message):
 broker_address = "localhost"
 # broker_address="iot.eclipse.org"
 print("creating new instance")
-client = mqtt.Client("P1")  # create new instance
+client = mqtt.Client("P1", transport="websockets")  # create new instance
 client.on_message = on_message  # attach function to callback
 print("connecting to broker")
-client.connect(broker_address)  # connect to broker
-client.loop_start()  # start the loop
+client.connect(broker_address, port=9001)  # connect to broker
 print("Subscribing to topic", "house/bulbs/bulb1")
 client.subscribe("house/bulbs/bulb1")
 print("Publishing message to topic", "house/bulbs/bulb1")
-client.publish("house/bulbs/bulb1", "OFF")
-time.sleep(4)  # wait
-client.loop_stop()  # stop the loop
+client.publish("house/bulbs/bulb1", "OFF", retain=True)
+
+# connects to mosquitto ws
+client.ws_set_options()
