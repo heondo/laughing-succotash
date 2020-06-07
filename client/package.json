@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "pretty": "prettier --write .",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -39,6 +40,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "@types/socket.io": "^2.1.8",
+    "@types/socket.io-client": "^1.4.33",
     "codelyzer": "^5.1.2",
     "husky": "^4.2.5",
     "jasmine-core": "~3.5.0",

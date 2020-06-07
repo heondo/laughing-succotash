@@ -6,7 +6,8 @@ import { environment } from 'src/environments/environment'
   providedIn: 'root',
 })
 export class SocketioService {
-  socket
+  socket: SocketIOClient.Socket
+  mqttData
 
   constructor() {
     this.setupSocketConnection()
@@ -14,6 +15,12 @@ export class SocketioService {
 
   setupSocketConnection() {
     this.socket = io(environment.SOCKET_ENDPOINT)
-    this.socket.emit('my message', 'Hello from angular')
+    this.mqttData = this.socket.emit(
+      'subscribe',
+      JSON.stringify({
+        topic: 'house/bulbs/bulb1',
+      })
+    )
+    console.log(this.mqttData)
   }
 }
