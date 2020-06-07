@@ -1,5 +1,6 @@
 import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core'
 import { MediaMatcher } from '@angular/cdk/layout'
+import { SocketioService } from './core/services/socketio/socketio.service'
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,11 @@ export class AppComponent implements OnDestroy {
 
   private mobileQueryListener: () => void
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(
+    private socketIOService: SocketioService,
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)')
     this.mobileQueryListener = () => changeDetectorRef.detectChanges()
     // tslint:disable-next-line

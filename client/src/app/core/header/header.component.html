@@ -4,22 +4,19 @@
   </button>
   <h1 routerLink="/">MQTT</h1>
   <span class="empty-space"></span>
-  <span>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
-      <mat-icon>apps</mat-icon>
-    </button>
-    <button mat-button (click)="logout()">Logout</button>
-  </span>
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>apps</mat-icon>
+  </button>
 </mat-toolbar>
 <mat-menu #appMenu="matMenu">
   <div class="d-flex">
     <button mat-menu-item class="text-center" routerLink="students">
-      <mat-icon class="m-0">person</mat-icon>
-      <div>Students</div>
+      <mat-icon class="m-0">dashboard</mat-icon>
+      <div>Dashboard</div>
     </button>
     <button mat-menu-item class="text-center" routerLink="meetings">
-      <mat-icon class="m-0">event</mat-icon>
-      <div>Meetings</div>
+      <mat-icon class="m-0">settings</mat-icon>
+      <div>Settings</div>
     </button>
   </div>
 </mat-menu>

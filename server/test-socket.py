@@ -24,7 +24,7 @@ app.config['MQTT_TLS_ENABLED'] = False
 # app.config['MQTT_TLS_CA_CERTS'] = 'ca.crt'
 
 mqtt = Mqtt(app)
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 bootstrap = Bootstrap(app)
 
 
@@ -48,6 +48,11 @@ def handle_subscribe(json_str):
 @socketio.on('unsubscribe_all')
 def handle_unsubscribe_all():
     mqtt.unsubscribe_all()
+
+@socketio.on('my message')
+def handle_unsubscribe_all(json_str):
+    data = json.loads(json_str)
+    print('Hit my message:', data['message'])
 
 
 @mqtt.on_message()
