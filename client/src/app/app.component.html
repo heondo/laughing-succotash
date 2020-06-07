@@ -1,27 +1,4 @@
-<mat-toolbar color="primary" class="toolbar">
-  <button mat-icon-button (click)="snav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <h1 routerLink="/">Atlas</h1>
-  <span class="empty-space"></span>
-  <button mat-icon-button [matMenuTriggerFor]="appMenu">
-    <mat-icon class="app-menu-button">apps</mat-icon>
-  </button>
-  <button mat-button>Account</button>
-</mat-toolbar>
-<mat-menu class="app-menu" #appMenu="matMenu">
-  <div class="row">
-    <button mat-menu-item routerLink="students">
-      <mat-icon>person</mat-icon>
-      <div>Students</div>
-    </button>
-    <button mat-menu-item routerLink="meetings">
-      <mat-icon>event</mat-icon>
-      <div>Meetings</div>
-    </button>
-  </div>
-</mat-menu>
-
+<app-header [snav]="snav"></app-header>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #snav
@@ -32,8 +9,6 @@
     <mat-nav-list>
       <a mat-list-item routerLink=""> Home </a>
       <a mat-list-item> Dashboard </a>
-      <a mat-list-item> Schedule </a>
-      <a mat-list-item> Account </a>
       <a
         mat-list-item
         (click)="$event.preventDefault(); snav.toggle()"

@@ -1,0 +1,17 @@
+mat-sidenav-content {
+  padding: 0.5rem;
+  min-height: 92vh;
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}

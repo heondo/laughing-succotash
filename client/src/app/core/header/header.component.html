@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
-  <h1 routerLink="/">Atlas</h1>
+  <button mat-icon-button (click)="snav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 routerLink="/">MQTT</h1>
   <span class="empty-space"></span>
   <span>
     <button mat-icon-button [matMenuTriggerFor]="appMenu">
