@@ -12,12 +12,12 @@ eventlet.monkey_patch()
 app = Flask(__name__)
 app.config['SECRET'] = ''
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-# app.config['MQTT_BROKER_URL'] = 'localhost'
-# app.config['MQTT_BROKER_PORT'] = 9001
-# app.config['MQTT_USERNAME'] = ''
-# app.config['MQTT_PASSWORD'] = ''
-# app.config['MQTT_KEEPALIVE'] = 5
-# app.config['MQTT_TLS_ENABLED'] = False
+app.config['MQTT_BROKER_URL'] = 'localhost'
+app.config['MQTT_BROKER_PORT'] = 1883
+app.config['MQTT_USERNAME'] = ''
+app.config['MQTT_PASSWORD'] = ''
+app.config['MQTT_KEEPALIVE'] = 5
+app.config['MQTT_TLS_ENABLED'] = False
 
 
 # def on_message(client, userdata, message):
@@ -40,11 +40,11 @@ def handle_mqtt_message(client, userdata, message):
 broker_address = "localhost"
 # broker_address="iot.eclipse.org"
 print("creating new instance")
-mqtt_client = mqtt.Client("P1", transport="websockets")  # create new instance
-mqtt_client.on_message = handle_mqtt_message  # attach function to callback
+# mqtt_client = mqtt.Client("P1", transport="websockets")  # create new instance
+# mqtt_client.on_message = handle_mqtt_message  # attach function to callback
 print("connecting to broker")
-mqtt_client.connect(broker_address, port=9001)  # connect to broker
-mqtt_client.subscribe('house')
+# mqtt_client.connect(broker_address, port=9001)  # connect to broker
+# mqtt_client.subscribe('house')
 # print("Subscribing to topic", "house/bulbs/bulb1")
 # mqtt_client.subscribe("house/bulbs/bulb1")
 # print("Publishing message to topic", "house/bulbs/bulb1")

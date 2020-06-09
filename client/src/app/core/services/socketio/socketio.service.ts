@@ -14,11 +14,13 @@ export class SocketioService {
   }
 
   setupSocketConnection() {
-    this.socket = io(environment.SOCKET_ENDPOINT)
+    this.socket = io(environment.SOCKET_ENDPOINT, { secure: true })
     console.log(this.socket)
     this.socket.on('connect', () =>
       console.log('connected to ' + environment.SOCKET_ENDPOINT)
     )
+
+    this.socket.addEventListener('mqtt_publish', (data) => console.log(data))
 
     // this.socket.on('mqtt_message', (data) => console.log(data))
     // this.socket.on('mqtt_message', (data) => console.log(data))
