@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CoreModule } from './core/core.module'
 import { SharedModule } from './shared/shared.module'
 import { SocketioService } from './core/services/socketio/socketio.service'
+import { DashModule } from './modules/dash/dash.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { SocketioService } from './core/services/socketio/socketio.service'
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
+    DashModule,
   ],
   providers: [SocketioService],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 {
   "remote.WSL.fileWatcher.pollingInterval": 5000,
   "workbench.panel.defaultLocation": "right",
-  "terminal.integrated.automationShell.linux": ""
+  "terminal.integrated.automationShell.linux": "",
+  "python.pythonPath": "server/env/bin/python3"
 }
