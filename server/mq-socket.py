@@ -43,7 +43,7 @@ def index():
 @socketio.on('publish')
 def handle_publish(json_str):
     data = json.loads(json_str)
-    mqtt.publish(data['topic'], data['message'])
+    mqtt.publish(data['topic'], data['message'], retain=True)
 
 
 @socketio.on('subscribe')
@@ -56,6 +56,9 @@ def handle_subscribe(json_str):
 def handle_unsubscribe_all():
     mqtt.unsubscribe_all()
 
+@mqtt.on_connect()
+def handle_mqtt_connect(client, userdata, flags, rc):
+    mqtt.subscribe('#')
 
 @mqtt.on_message()
 def handle_mqtt_message(client, userdata, message):
@@ -65,13 +68,11 @@ def handle_mqtt_message(client, userdata, message):
     )
     socketio.emit('mqtt_message', data=data)
 
-@mqtt.on_publish()
-def handle_mqtt_publish(client, userdata, message):
-    # data = dict(
-    #     topic=message.topic,
-    #     payload=message.payload.decode()
-    # )
-    socketio.emit('mqtt_publish', data=message)
+# @mqtt.on_publish()
+# def handle_mqtt_publish(client, userdata, mid):
+#     print('I just published from anywhere')
+#     socketio.emit('mqtt_publish', data='Published message with mid {}.'
+#           .format(mid))
 
 @mqtt.on_log()
 def handle_logging(client, userdata, level, buf):
@@ -79,5 +80,4 @@ def handle_logging(client, userdata, level, buf):
 
 
 if __name__ == '__main__':
-    mqtt.subscribe('house')
     socketio.run(app, host='0.0.0.0', port=5000, use_reloader=False, debug=True)

@@ -17,12 +17,25 @@ export class DashboardComponent implements OnInit {
         message: 'OFF',
       })
     )
-    // this.socketService.socket.emit(
-    //   'subscribe',
-    //   JSON.stringify({
-    //     topic: 'house/',
-    //   })
-    // )
+  }
+
+  publishDummy2() {
+    this.socketService.socket.emit(
+      'publish',
+      JSON.stringify({
+        topic: 'house/bulbs/bulb2',
+        message: 'OFF',
+      })
+    )
+  }
+
+  subscribeToTopic(topic: string): void {
+    this.socketService.socket.emit(
+      'subscribe',
+      JSON.stringify({
+        topic: 'house/',
+      })
+    )
   }
 
   ngOnInit(): void {}
