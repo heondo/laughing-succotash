@@ -30,4 +30,33 @@ export class SocketioService {
       console.log('message', data)
     )
   }
+
+  publishDummy() {
+    this.socket.emit(
+      'publish',
+      JSON.stringify({
+        topic: 'house/bulbs/bulb1',
+        message: 'OFF',
+      })
+    )
+  }
+
+  publishDummy2() {
+    this.socket.emit(
+      'publish',
+      JSON.stringify({
+        topic: 'house/bulbs/bulb2',
+        message: 'OFF',
+      })
+    )
+  }
+
+  subscribeToTopic(topic: string): void {
+    this.socket.emit(
+      'subscribe',
+      JSON.stringify({
+        topic,
+      })
+    )
+  }
 }

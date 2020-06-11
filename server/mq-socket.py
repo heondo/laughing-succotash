@@ -56,9 +56,9 @@ def handle_subscribe(json_str):
 def handle_unsubscribe_all():
     mqtt.unsubscribe_all()
 
-@mqtt.on_connect()
-def handle_mqtt_connect(client, userdata, flags, rc):
-    mqtt.subscribe('#')
+# @mqtt.on_connect()
+# def handle_mqtt_connect(client, userdata, flags, rc):
+#     mqtt.subscribe('#')
 
 @mqtt.on_message()
 def handle_mqtt_message(client, userdata, message):

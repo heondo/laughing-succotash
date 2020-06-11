@@ -24,7 +24,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/app/assets/indigo-pink.css", "src/styles.scss"],
+            "styles": ["src/assets/indigo-pink.css", "src/styles.scss"],
             "scripts": []
           },
           "configurations": {

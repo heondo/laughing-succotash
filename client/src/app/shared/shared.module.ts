@@ -6,7 +6,10 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list'
+import { MatInputModule } from '@angular/material/input'
 import { RouterModule } from '@angular/router'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [],
@@ -19,6 +22,10 @@ import { RouterModule } from '@angular/router'
     RouterModule,
     MatSidenavModule,
     MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class SharedModule {}
