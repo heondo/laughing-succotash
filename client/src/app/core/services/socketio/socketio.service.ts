@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core'
 import io from 'socket.io-client'
 import { environment } from 'src/environments/environment'
-import { Observable } from 'rxjs'
+import { Observable, BehaviorSubject } from 'rxjs'
+
+export interface BrokerMessage {
+  topic: string
+  payload: any
+}
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +14,7 @@ import { Observable } from 'rxjs'
 export class SocketioService {
   socket: SocketIOClient.Socket
   brokerSubscriptions: Observable<string[]>
-  brokerData: Observable<any>
+  public brokerData = new BehaviorSubject<any>({})
   // mqttSubscription: SocketIOClient.Socket
 
   constructor() {
@@ -26,9 +31,16 @@ export class SocketioService {
     // this.socket.addEventListener('mqtt_publish', (data) =>
     //   console.log('publish', data)
     // )
-    this.socket.addEventListener('mqtt_message', (data) =>
-      console.log('message', data)
-    )
+    // when i subscribe to a topic i will get all of the data children, separately
+    this.socket.addEventListener('mqtt_message', (data: BrokerMessage) => {
+      const currentData = this.brokerData.value
+      this.brokerData.next({
+        ...currentData,
+        [data.topic]: data.payload,
+      })
+
+      console.log(this.brokerData.value)
+    })
   }
 
   publishDummy() {
