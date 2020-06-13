@@ -28,38 +28,21 @@ export class SocketioService {
     this.socket.on('connect', () =>
       console.log('connected to ' + environment.SOCKET_ENDPOINT)
     )
-
-    // this.socket.addEventListener('mqtt_publish', (data) =>
-    //   console.log('publish', data)
-    // )
-    // when i subscribe to a topic i will get all of the data children, separately
     this.socket.addEventListener('mqtt_message', (data: BrokerMessage) => {
       const currentData = this.brokerData.value
       this.brokerData.next({
         ...currentData,
         [data.topic]: data.payload,
       })
-
-      console.log(this.brokerData.value)
     })
   }
 
-  publishDummy() {
+  publishMessage(topic: string, message: string): void {
     this.socket.emit(
       'publish',
       JSON.stringify({
-        topic: 'house/bulbs/bulb1',
-        message: 'OFF',
-      })
-    )
-  }
-
-  publishDummy2() {
-    this.socket.emit(
-      'publish',
-      JSON.stringify({
-        topic: 'house/bulbs/bulb2',
-        message: 'OFF',
+        topic,
+        message,
       })
     )
   }
