@@ -15,6 +15,7 @@ export class SocketioService {
   socket: SocketIOClient.Socket
   brokerSubscriptions: Observable<string[]>
   public brokerData = new BehaviorSubject<any>({})
+  brokerDataObservable = this.brokerData.asObservable()
   // mqttSubscription: SocketIOClient.Socket
 
   constructor() {

@@ -1,12 +1,7 @@
+<div>Subscribed Topics</div>
 <form [formGroup]="form" (ngSubmit)="save()">
   <mat-form-field appearance="standard">
-    <input
-      matInput
-      required
-      placeholder="Topic"
-      type="text"
-      formControlName="topic"
-    />
+    <input matInput placeholder="Topic" type="text" formControlName="topic" />
   </mat-form-field>
   <button
     mat-raised-button
@@ -17,3 +12,6 @@
     Submit
   </button>
 </form>
+<div>
+  {{ socketService.brokerDataObservable | async | json }}
+</div>
