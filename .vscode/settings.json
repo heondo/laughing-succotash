@@ -2,7 +2,7 @@
   "remote.WSL.fileWatcher.pollingInterval": 5000,
   "workbench.panel.defaultLocation": "right",
   "terminal.integrated.automationShell.linux": "",
-  "python.pythonPath": "server/env/bin/python3",
+  "python.pythonPath": "/usr/bin/python",
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "python.formatting.provider": "black"
