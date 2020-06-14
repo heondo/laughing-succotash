@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 
 @Component({
   selector: 'app-subscription-item',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./subscription-item.component.scss'],
 })
 export class SubscriptionItemComponent implements OnInit {
+  @Input() topic: string
+  @Input() topicData: string
+
   constructor() {}
 
   ngOnInit(): void {}

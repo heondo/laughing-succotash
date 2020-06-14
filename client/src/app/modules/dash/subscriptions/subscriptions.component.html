@@ -13,9 +13,5 @@
   </button>
 </form>
 <div>
-  <div
-    *ngFor="let item of socketService.brokerDataObservable | async | keyvalue"
-  >
-    {{ item | json }}
-  </div>
+  {{ socketService.brokerDataObservable | async | json }}
 </div>
