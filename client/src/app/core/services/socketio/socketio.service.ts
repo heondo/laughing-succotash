@@ -37,7 +37,6 @@ export class SocketioService {
     )
 
     this.socket.on('connect', () =>
-      // console.log('connected to ' + environment.SOCKET_ENDPOINT)
       this.socket.emit(
         'subscribe',
         JSON.stringify({

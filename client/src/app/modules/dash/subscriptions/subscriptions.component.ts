@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { SocketioService } from 'src/app/core/services/socketio/socketio.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import _ from 'lodash'
 
 @Component({
   selector: 'app-subscriptions',
@@ -9,7 +10,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class SubscriptionsComponent implements OnInit {
   form: FormGroup
-  constructor(public socketService: SocketioService, private fb: FormBuilder) {}
+  jsonData: any
+  constructor(public socketService: SocketioService, private fb: FormBuilder) {
+    this.socketService.brokerDataObservable.subscribe((data) => {
+      this.jsonData = _.cloneDeep(data)
+    })
+  }
 
   ngOnInit(): void {
     this.initialize()

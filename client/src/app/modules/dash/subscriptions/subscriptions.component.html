@@ -13,5 +13,6 @@
   </button>
 </form>
 <div>
-  {{ socketService.brokerDataObservable | async | json }}
+  <app-ngx-json-viewer [json]="jsonData"></app-ngx-json-viewer>
+  <!-- {{ socketService.brokerDataObservable | async | json }} -->
 </div>

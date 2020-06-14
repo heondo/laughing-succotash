@@ -6,6 +6,7 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { SidePanelComponent } from './side-panel/side-panel.component'
 import { PublishPanelComponent } from './publish-panel/publish-panel.component'
 import { SubscriptionItemComponent } from './subscriptions/subscription-item/subscription-item.component'
+import { NgxJsonViewerModule } from './../ngx-json-viewer/ngx-json-viewer.module'
 
 @NgModule({
   declarations: [
@@ -15,6 +16,6 @@ import { SubscriptionItemComponent } from './subscriptions/subscription-item/sub
     PublishPanelComponent,
     SubscriptionItemComponent,
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, NgxJsonViewerModule],
 })
 export class DashModule {}
